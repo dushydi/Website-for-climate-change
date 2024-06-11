@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Order to save the planet</title>
+    <link rel="stylesheet" href="student1_style.css"> 
+</head>
+<body>
+    <div id="splash-screen">
+        <img src="ourlogo.png"  alt="Logo">
+        <img src="loader2.gif" id="loading" height="100" width="100" alt="loading image ">
+        
+    </div>
+
+    <script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.getElementById('splash-screen').style.display = 'none';
+        }, 4000); // The splash screen will be hidden after 4 seconds
+    });
+    </script>
+</body>
+</html>    

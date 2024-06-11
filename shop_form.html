@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Details</title>
+    <link rel="stylesheet" href="student1_style.css"> 
+</head>
+<body class="form_body">
+    <div class="form_container">
+        <h2 class="form_h2">Almost there...</h2><br>
+        <p >Fill in the details below to complete your purchase</p>
+
+        <form onsubmit="formsubmit()">
+            <div class="form_container2">
+                <p><span class="redstar">*</span> indicates required fields.</p>
+                <h3 class="form_h3">Payment Information:</h3>
+                <label for="card-number">Card Number:<span class="redstar">*</span></label>
+                <input type="text" id="card-number" placeholder="**** **** **** ****" pattern="[0-9]{16}" title="Please enter a valid 16-digit card number." maxlength="16" required><br>
+                
+                <label for="cardholder-name">Cardholder Name:<span class="redstar">*</span></label>
+                <input type="text" id="cardholder-name" maxlength="30" placeholder="max: 30 characters" required><br>
+                
+                <div class="expiry-date">
+                    <label for="expiry-month">Expiry Month<span class="redstar">*</span></label>
+                    <input type="number" id="expiry-month" placeholder="MM" min="1" max="12" title="Please enter a valid month (1-12)." required>
+                    
+                    <label for="expiry-year">Expiry Year:<span class="redstar">*</span></label>
+                    <input type="number" id="expiry-year" placeholder="YY" min="24" max="99" title="Please enter a valid 2-digit year (24-50)." required><br>
+                </div>
+                
+                <label for="cvv">CVV:<span class="redstar">*</span></label>
+                <input type="text" id="cvv" placeholder="***" pattern="[0-9]{3}" title="Please enter a valid 3-digit CVV." required><br>
+            </div>
+            <hr class="form_hr">
+
+            <div class="form_container2">
+                <h3 class="form_h3">Billing Address:</h3>
+                <div class="address-fields">
+                    <label for="address">Address:<span class="redstar">*</span></label>
+                    <textarea id="address" rows="1" maxlength="100" minlength="10" placeholder="Enter your address here..." required></textarea><br>
+
+                    <label for="town-city">Town/City:<span class="redstar">*</span></label>
+                    <input type="text" id="town-city" placeholder="City" maxlength="30" required><br>
+
+                    <label for="state-county">State/County:<span class="redstar">*</span></label>
+                    <input type="text" id="state-county" placeholder="State" maxlength="20" required><br>
+
+                    <label for="postcode-zip">Postcode/Zip code:</label>
+                    <input type="text" id="postcode-zip" placeholder="Zip code" maxlength="10" ><br>
+
+                    <label for="country">Country:<span class="redstar">*</span></label>
+                    <select id="country" class="form_select" required>
+                        <option value="">Select Country</option>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="FR">France</option>
+                        <option value="DE">Germany</option>
+                        <option value="Sl">Sri Lanka</option>
+                    </select>
+                </div>
+            </div>
+            <hr class="form_hr">
+            <div class="form_container2">
+                <h3 class="form_h3">Contact Details:</h3>
+                <div class="contact-fields">
+                    <label for="first-name">First Name:<span class="redstar">*</span></label>
+                    <input type="text" id="first-name" placeholder="First name" required><br>
+
+                    <label for="last-name">Surname:<span class="redstar">*</span></label>
+                    <input type="text" id="last-name" placeholder="Sur name" required><br>
+
+                    <label for="phone-number">Phone Number:<span class="redstar">*</span></label>
+                    <input type="tel" id="phone-number" placeholder="Phone number" pattern="[0-9]{10}" title="Please enter a 10-digit phone number." required><br>
+
+                    <label for="email-address">Email Address:</label>
+                    <input type="email" id="email-address" placeholder="firstname@example.com" >
+                </div>
+            </div>
+            <hr class="form_hr">
+            <span class="redstar">*</span> Please fill required fields 
+            <div class="order-details">
+                <h3 class="form_h3">Order Details:</h3>
+                <p id="total-price"></p>
+            </div>
+
+            <div class="payment-buttons">
+                <input type="reset" value="reset">
+                <input type="submit" value="Pay Now">
+                <br><br>
+            </div>
+        </form>  
+    </div>
+    <script>
+        function formsubmit() {
+            alert("Payment received. Thank you!");
+            try {
+                window.close();
+            } catch (error) {
+                console.error("Error closing window:", error);
+            }
+        }
+    
+        // Retrieve totalPriceString from localStorage
+        const totalPriceString = localStorage.getItem('totalPrice');
+    
+        // Update the content of the element with id "total-price" with totalPriceString
+        const totalElement = document.getElementById('total-price');
+        if (totalElement) {
+            totalElement.textContent = "Total Price: $" + totalPriceString; // You can format it as needed
+        }
+    </script>
+</body>
+</html>
